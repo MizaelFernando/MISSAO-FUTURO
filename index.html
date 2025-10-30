@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão Futuro</title>
+    <link rel="stylesheet" href="estilo.css"> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <h1>🚀 Missão Futuro</h1>
+
+        <div id="setup-screen">
+
+            <div class="input-group">
+                <label for="player-name">Seu Nome:</label>
+                <input type="text" id="player-name" placeholder="Digite seu nome...">
+            </div>
+
+            <div class="input-group">
+                <h3>Qual é a sua vocação? Escolha uma das grandes áreas do conhecimento:</h3>
+                
+                <div id="character-selection">
+                    <div class="character-card" data-character="exatas">
+                        <img id="img-exatas" src="placeholder_exatas.png" alt="">
+                        <p>EXATAS</p>
+                        <div class="color-options">
+                            <span class="color-swatch purple" data-color="purple"></span>
+                            <span class="color-swatch yellow" data-color="yellow"></span>
+                            <span class="color-swatch cyan" data-color="cyan"></span>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-character="saude">
+                        <img id="img-saude" src="placeholder_saude.png" alt="">
+                        <p>SAÚDE</p>
+                        <div class="color-options">
+                            <span class="color-swatch pink" data-color="pink"></span>
+                            <span class="color-swatch teal" data-color="teal"></span>
+                            <span class="color-swatch gray" data-color="gray"></span>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-character="humanas">
+                        <img id="img-humanas" src="placeholder_humanas.png" alt="">
+                        <p>HUMANAS</p>
+                        <div class="color-options">
+                            <span class="color-swatch red" data-color="red"></span>
+                            <span class="color-swatch green" data-color="green"></span>
+                            <span class="color-swatch bronze" data-color="bronze"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="character-preview-container">
+                <h4>Pré-visualização da Seleção:</h4>
+                <p id="preview-text">Selecione uma área e cor para visualizar.</p>
+                <div id="character-preview">
+                    <img id="preview-image" src="default_preview.png" alt="Pré-visualização da Área">
+                    <div id="preview-color-overlay"></div>
+                </div>
+            </div>
+
+            <button id="start-game-button" disabled>Iniciar Missão</button>
+            <p id="error-message"></p>
+        </div>
+        
+        <div id="game-screen" style="display: none;">
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

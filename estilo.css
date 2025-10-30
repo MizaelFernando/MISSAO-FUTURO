@@ -1,0 +1,829 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #231c1d;
+    color: #e1e1e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.6;
+}
+
+#game-container {
+    background-color: #2c2526;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #c79f76;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 650px;
+    width: 90%;
+    transition: max-width 0.3s ease;
+}
+
+h1 {
+    color: #c79f76; /* Dourado */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h2 {
+    color: #e1e1e1;
+}
+
+h3, h4 {
+    color: #c79f76; /* Dourado */
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #c79f76; /* Dourado */
+}
+
+#player-name, #player-profession {
+    width: 95%;
+    padding: 12px;
+    border: 2px solid #c79f76;
+    background-color: #231c1d;
+    color: #e1e1e1;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#player-name:focus, #player-profession:focus {
+    outline: none;
+    border-color: #83e6fb; /* Azul Claro */
+    box-shadow: 0 0 8px rgba(131, 230, 251, 0.5);
+}
+
+
+#character-selection {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.character-card {
+    background-color: #231c1d;
+    border: 2px solid #c79f76;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.character-card.selected-card {
+    border-color: #cc243f; /* Vermelho Principal */
+    box-shadow: 0 0 12px rgba(204, 36, 63, 0.7);
+    transform: scale(1.02);
+}
+
+.character-card img, #preview-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: block;
+    transition: background-color 0.3s ease;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none !important;
+}
+
+.color-options {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.color-swatch {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch.selected-color {
+    border-color: #83e6fb; /* Azul Claro */
+    box-shadow: 0 0 5px #83e6fb;
+}
+
+/* Amostras de cores */
+.color-swatch.red { background-color: #e63946; }
+.color-swatch.green { background-color: #6a994e; }
+.color-swatch.purple { background-color: #8b5cf6; }
+.color-swatch.yellow { background-color: #f7b267; }
+.color-swatch.cyan { background-color: #00bcd4; }
+.color-swatch.pink { background-color: #ff69b4; }
+.color-swatch.teal { background-color: #008080; }
+.color-swatch.gray { background-color: #6c757d; }
+.color-swatch.bronze { background-color: #cd7f32; }
+
+#character-preview-container {
+    background-color: #231c1d;
+    border: 1px solid #c79f76;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 25px 0;
+    text-align: center;
+}
+
+#preview-text {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #c79f76; /* Dourado */
+}
+
+#character-preview {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 15px auto;
+}
+
+#preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#preview-color-overlay {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: none;
+    opacity: 0.8;
+}
+
+/* Botões de Ação */
+.action-button {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+}
+.action-button:hover {
+    transform: translateY(-1px);
+}
+.action-button:disabled {
+    background-color: #2c2526;
+    cursor: not-allowed;
+    color: #6e7681;
+    border: 1px solid #6e7681;
+    transform: none;
+}
+
+/* Botão Primário (Start, Submit) */
+#start-game-button, #submit-quiz-button {
+    background-color: #cc243f; /* Vermelho Principal */
+    color: #FFFFFF;
+}
+#start-game-button:hover, #submit-quiz-button:hover {
+    background-color: #a31d32; /* Vermelho Escuro */
+}
+
+/* Botão Secundário (Continue, Next) */
+#continue-phase-2, .next-phase-button {
+    background-color: #c79f76; /* Dourado */
+    color: #231c1d; /* Texto Escuro */
+}
+#continue-phase-2:hover, .next-phase-button:hover {
+    background-color: #ad8a65; /* Dourado Escuro */
+}
+
+#error-message {
+    color: #cc243f; /* Vermelho Principal */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Controle de telas */
+#setup-screen { display: block; }
+#game-screen { display: none; }
+
+/* --- ESTILOS GERAIS DE FASE --- */
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: #c79f76; /* Dourado */
+    color: #231c1d; /* Texto Escuro */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    z-index: 10;
+}
+.back-button:hover {
+    background-color: #ad8a65;
+}
+
+/* Feedback de Resposta (Global) */
+.feedback-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    display: none; /* Inicia oculto */
+    text-align: left;
+}
+.feedback-box h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.feedback-box.correct {
+    border: 1px solid #c79f76; /* Dourado */
+    background-color: rgba(199, 159, 118, 0.1);
+    color: #c79f76;
+}
+.feedback-box.incorrect {
+    border: 1px solid #cc243f; /* Vermelho */
+    background-color: rgba(204, 36, 63, 0.1);
+    color: #cc243f;
+}
+.feedback-box.positive { /* Para Fase 4 */
+    border: 1px solid #c79f76;
+    background-color: rgba(199, 159, 118, 0.1);
+    color: #c79f76;
+}
+.feedback-box.negative { /* Para Fase 4 */
+    border: 1px solid #cc243f;
+    background-color: rgba(204, 36, 63, 0.1);
+    color: #cc243f;
+}
+
+/* --- ESTILOS DA FASE 1 (QUIZ DE AUTOCONHECIMENTO) --- */
+
+.question-block {
+    background-color: #2c2526;
+    margin-bottom: 20px;
+    border: 1px solid #c79f76;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    transition: box-shadow 0.2s;
+}
+
+.question-block h4 {
+    color: #e1e1e1;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.question-block div[data-clickable] {
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+.question-block div[data-clickable]:hover {
+    background-color: #352e2f;
+}
+
+.question-block input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #c79f76; /* Dourado */
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+    top: 2px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.question-block input[type="radio"]:checked {
+    background-color: #c79f76;
+    border-color: #c79f76;
+    box-shadow: 0 0 5px #c79f76;
+}
+
+.question-block label {
+    font-weight: normal;
+    font-size: 0.95em;
+    cursor: pointer;
+    flex-grow: 1;
+    color: #e1e1e1; /* Texto normal */
+}
+
+#phase-1-result > div {
+    text-align: left;
+    padding: 25px;
+    border: 2px solid #cc243f; /* Destaque Vermelho */
+    border-radius: 8px;
+    background-color: #231c1d;
+}
+
+
+/* --- ESTILOS DA FASE 2 (QUIZ DE PROFISSÕES) --- */
+
+#phase-2-quiz {
+    text-align: left;
+    margin: 20px 0;
+}
+
+#phase-2-question-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e1e1e1;
+    margin-bottom: 20px;
+}
+
+#phase-2-answers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.answer-button {
+    text-align: left;
+    padding: 15px;
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    color: #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1em;
+}
+.answer-button:hover {
+    background-color: #352e2f;
+    border-color: #83e6fb; /* Azul Claro */
+}
+.answer-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #231c1d;
+}
+
+#phase-2-feedback {
+    /* Estilo movido para .feedback-box */
+}
+
+#card-gallery-title {
+    margin-top: 30px;
+    border-top: 1px solid #c79f76;
+    padding-top: 20px;
+    color: #c79f76;
+}
+
+#phase-2-card-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.profession-card {
+    background-color: #231c1d;
+    border: 1px solid #c79f76;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.profession-card.new-unlock {
+    border-color: #83e6fb; /* Azul Claro */
+    box-shadow: 0 0 15px rgba(131, 230, 251, 0.5);
+    animation: pulse-new 1.5s ease-in-out;
+}
+
+.profession-card h4 {
+    color: #c79f76; /* Dourado */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.profession-card p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: #e1e1e1;
+}
+
+.profession-card strong {
+    color: #e1e1e1;
+    font-weight: 600;
+}
+
+@keyframes pulse-new {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); border-color: #83e6fb; }
+    100% { transform: scale(1); }
+}
+
+/* --- ESTILOS DA FASE 3 (CAMINHO DA ESCOLHA) --- */
+
+#phase-3-profession-selection,
+#phase-3-step-quiz {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.profession-select-label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: left;
+    color: #c79f76;
+}
+
+.profession-choice {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.profession-choice input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #c79f76; /* Dourado */
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+    top: 3px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.profession-choice input[type="radio"]:checked {
+    background-color: #c79f76;
+    border-color: #c79f76;
+    box-shadow: 0 0 5px #c79f76;
+}
+
+.profession-choice label {
+    font-size: 1.1em;
+    cursor: pointer;
+    font-weight: normal;
+    color: #e1e1e1;
+}
+
+#phase-3-step-question {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e1e1e1;
+    margin-bottom: 20px;
+    background-color: #2c2526;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #c79f76; /* Dourado */
+    text-align: left;
+}
+
+#phase-3-step-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.step-option-button {
+    text-align: left;
+    padding: 15px;
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    color: #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1em;
+    width: 100%;
+}
+.step-option-button:hover {
+    background-color: #352e2f;
+    border-color: #83e6fb; /* Azul Claro */
+}
+.step-option-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #231c1d;
+}
+
+#phase-3-feedback {
+    /* Estilo movido para .feedback-box */
+}
+
+#phase-3-summary {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #c79f76; /* Dourado */
+    border-radius: 8px;
+    background-color: #231c1d;
+    text-align: left;
+    display: none;
+}
+#phase-3-summary h3 {
+    color: #c79f76;
+    margin-top: 0;
+}
+
+/* --- ESTILOS DA FASE 4 (DESAFIO DA MOTIVAÇÃO) --- */
+#phase-4-scenario {
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+#phase-4-scenario-text {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #e1e1e1;
+    margin-bottom: 20px;
+}
+#phase-4-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.choice-button {
+    text-align: left;
+    padding: 15px;
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    color: #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1em;
+    width: 100%;
+}
+.choice-button:hover {
+    background-color: #352e2f;
+    border-color: #83e6fb; /* Azul Claro */
+}
+.choice-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#phase-4-consequence {
+    /* Estilo movido para .feedback-box */
+}
+/* --- ESTILOS DA FASE 4 (DESAFIO DA MOTIVAÇÃO) --- */
+#phase-4-scenario {
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+#phase-4-scenario-text {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #e1e1e1;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+#phase-4-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.choice-button {
+    text-align: left;
+    padding: 15px;
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    color: #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1em;
+    width: 100%;
+}
+.choice-button:hover {
+    background-color: #352e2f;
+    border-color: #83e6fb; /* Azul Claro */
+}
+.choice-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#phase-4-feedback {
+    /* Estilo movido para .feedback-box */
+    text-align: left;
+}
+
+#phase-4-summary {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #c79f76; /* Dourado */
+    border-radius: 8px;
+    background-color: #231c1d;
+    text-align: left;
+    display: none;
+}
+#phase-4-summary h3 {
+    color: #c79f76;
+    margin-top: 0;
+}
+/* --- ESTILOS DA FASE 4 (DESAFIO DA MOTIVAÇÃO) --- */
+/* (Seu CSS da Fase 4 que já estava aqui) */
+#phase-4-scenario {
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+#phase-4-scenario-text {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #e1e1e1;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+#phase-4-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.choice-button {
+    text-align: left;
+    padding: 15px;
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    color: #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1em;
+    width: 100%;
+}
+.choice-button:hover {
+    background-color: #352e2f;
+    border-color: #83e6fb; /* Azul Claro */
+}
+.choice-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+#phase-4-feedback {
+    text-align: left;
+}
+#phase-4-summary {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #c79f76; /* Dourado */
+    border-radius: 8px;
+    background-color: #231c1d;
+    text-align: left;
+    display: none;
+}
+#phase-4-summary h3 {
+    color: #c79f76;
+    margin-top: 0;
+}
+
+/* --- ESTILOS DA FASE 5 (PROJETO de VIDA) --- */
+#phase-5-form {
+    text-align: left;
+}
+.phase-5-question-group {
+    margin-bottom: 20px;
+}
+.phase-5-question-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #c79f76; /* Dourado */
+    font-size: 1.1em;
+}
+/* Estilo para combinar com os inputs da Fase 1 */
+.phase-5-question-group input[type="text"],
+.phase-5-question-group textarea {
+    width: 95%; /* Match existing inputs */
+    padding: 12px;
+    border: 2px solid #c79f76;
+    background-color: #231c1d;
+    color: #e1e1e1;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit;
+}
+.phase-5-question-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+#phase-5-summary {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #c79f76; /* Dourado */
+    border-radius: 8px;
+    background-color: #231c1d;
+    text-align: left;
+    display: none;
+}
+#phase-5-summary h3 {
+    color: #c79f76;
+    margin-top: 0;
+}
+
+/* --- ESTILOS DO RANKING LOCAL (FASE 5) --- */
+#ranking-section h3 {
+    color: #c79f76; /* Dourado */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #2c2526; /* Fundo principal */
+    color: #e1e1e1; /* Texto claro */
+    border-radius: 8px;
+    overflow: hidden; /* Para o border-radius funcionar com a tabela */
+}
+
+#ranking-table th, #ranking-table td {
+    border: 1px solid #c79f76; /* Borda dourada */
+    padding: 10px 12px;
+    text-align: left;
+}
+
+#ranking-table th {
+    background-color: #c79f76; /* Cabeçalho dourado */
+    color: #231c1d; /* Texto escuro no cabeçalho */
+    font-weight: bold;
+}
+
+#ranking-table td:first-child { /* Coluna Posição */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Destaque para o primeiro lugar */
+#ranking-table .first-place-highlight td {
+    background-color: rgba(199, 159, 118, 0.3); /* Dourado translúcido */
+    color: #fff; /* Texto mais branco para destaque */
+    font-weight: bold;
+}
+#ranking-table .first-place-highlight td:first-child::before {
+    content: "🥇 "; /* Ícone de medalha */
+}
+
+/* Destaque para a linha do jogador atual */
+#ranking-table .current-player-highlight td {
+    background-color: rgba(131, 230, 251, 0.2); /* Azul claro translúcido */
+    border-top: 2px solid #83e6fb;
+    border-bottom: 2px solid #83e6fb;
+}
+
+.current-player-rank-message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #83e6fb; /* Azul claro */
+    font-size: 1.1em;
+}
