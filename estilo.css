@@ -23,7 +23,7 @@ body {
 }
 
 h1 {
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
     margin-bottom: 20px;
     font-weight: 600;
 }
@@ -33,7 +33,7 @@ h2 {
 }
 
 h3, h4 {
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
 }
 
 .input-group {
@@ -45,7 +45,7 @@ label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
 }
 
 #player-name, #player-profession {
@@ -61,7 +61,7 @@ label {
 
 #player-name:focus, #player-profession:focus {
     outline: none;
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
     box-shadow: 0 0 8px rgba(131, 230, 251, 0.5);
 }
 
@@ -87,7 +87,7 @@ label {
 }
 
 .character-card.selected-card {
-    border-color: #cc243f; /* Vermelho Principal */
+    border-color: #cc243f; 
     box-shadow: 0 0 12px rgba(204, 36, 63, 0.7);
     transform: scale(1.02);
 }
@@ -126,11 +126,10 @@ label {
 }
 
 .color-swatch.selected-color {
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
     box-shadow: 0 0 5px #83e6fb;
 }
 
-/* Amostras de cores */
 .color-swatch.red { background-color: #e63946; }
 .color-swatch.green { background-color: #6a994e; }
 .color-swatch.purple { background-color: #8b5cf6; }
@@ -153,7 +152,7 @@ label {
 #preview-text {
     margin-bottom: 10px;
     font-size: 1.1em;
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
 }
 
 #character-preview {
@@ -185,7 +184,6 @@ label {
     opacity: 0.8;
 }
 
-/* Botões de Ação */
 .action-button {
     padding: 12px 20px;
     font-size: 1.1em;
@@ -207,35 +205,30 @@ label {
     transform: none;
 }
 
-/* Botão Primário (Start, Submit) */
 #start-game-button, #submit-quiz-button {
-    background-color: #cc243f; /* Vermelho Principal */
+    background-color: #cc243f; 
     color: #FFFFFF;
 }
 #start-game-button:hover, #submit-quiz-button:hover {
-    background-color: #a31d32; /* Vermelho Escuro */
+    background-color: #a31d32; 
 }
 
-/* Botão Secundário (Continue, Next) */
 #continue-phase-2, .next-phase-button {
-    background-color: #c79f76; /* Dourado */
-    color: #231c1d; /* Texto Escuro */
+    background-color: #c79f76; 
+    color: #231c1d; 
 }
 #continue-phase-2:hover, .next-phase-button:hover {
-    background-color: #ad8a65; /* Dourado Escuro */
+    background-color: #ad8a65; 
 }
 
 #error-message {
-    color: #cc243f; /* Vermelho Principal */
+    color: #cc243f; 
     margin-top: 10px;
     font-weight: bold;
 }
 
-/* Controle de telas */
 #setup-screen { display: block; }
 #game-screen { display: none; }
-
-/* --- ESTILOS GERAIS DE FASE --- */
 
 .back-button {
     position: absolute;
@@ -243,8 +236,8 @@ label {
     left: 20px;
     padding: 8px 15px;
     font-size: 0.9em;
-    background-color: #c79f76; /* Dourado */
-    color: #231c1d; /* Texto Escuro */
+    background-color: #c79f76; 
+    color: #231c1d; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -255,12 +248,11 @@ label {
     background-color: #ad8a65;
 }
 
-/* Feedback de Resposta (Global) */
 .feedback-box {
     margin-top: 20px;
     padding: 15px;
     border-radius: 5px;
-    display: none; /* Inicia oculto */
+    display: none; 
     text-align: left;
 }
 .feedback-box h4 {
@@ -268,27 +260,25 @@ label {
     margin-bottom: 5px;
 }
 .feedback-box.correct {
-    border: 1px solid #c79f76; /* Dourado */
+    border: 1px solid #c79f76; 
     background-color: rgba(199, 159, 118, 0.1);
     color: #c79f76;
 }
 .feedback-box.incorrect {
-    border: 1px solid #cc243f; /* Vermelho */
+    border: 1px solid #cc243f; 
     background-color: rgba(204, 36, 63, 0.1);
     color: #cc243f;
 }
-.feedback-box.positive { /* Para Fase 4 */
+.feedback-box.positive { 
     border: 1px solid #c79f76;
     background-color: rgba(199, 159, 118, 0.1);
     color: #c79f76;
 }
-.feedback-box.negative { /* Para Fase 4 */
+.feedback-box.negative { 
     border: 1px solid #cc243f;
     background-color: rgba(204, 36, 63, 0.1);
     color: #cc243f;
 }
-
-/* --- ESTILOS DA FASE 1 (QUIZ DE AUTOCONHECIMENTO) --- */
 
 .question-block {
     background-color: #2c2526;
@@ -325,7 +315,7 @@ label {
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid #c79f76; /* Dourado */
+    border: 2px solid #c79f76; 
     border-radius: 50%;
     outline: none;
     position: relative;
@@ -343,19 +333,16 @@ label {
     font-size: 0.95em;
     cursor: pointer;
     flex-grow: 1;
-    color: #e1e1e1; /* Texto normal */
+    color: #e1e1e1; 
 }
 
 #phase-1-result > div {
     text-align: left;
     padding: 25px;
-    border: 2px solid #cc243f; /* Destaque Vermelho */
+    border: 2px solid #cc243f; 
     border-radius: 8px;
     background-color: #231c1d;
 }
-
-
-/* --- ESTILOS DA FASE 2 (QUIZ DE PROFISSÕES) --- */
 
 #phase-2-quiz {
     text-align: left;
@@ -388,16 +375,12 @@ label {
 }
 .answer-button:hover {
     background-color: #352e2f;
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
 }
 .answer-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: #231c1d;
-}
-
-#phase-2-feedback {
-    /* Estilo movido para .feedback-box */
 }
 
 #card-gallery-title {
@@ -424,13 +407,13 @@ label {
 }
 
 .profession-card.new-unlock {
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
     box-shadow: 0 0 15px rgba(131, 230, 251, 0.5);
     animation: pulse-new 1.5s ease-in-out;
 }
 
 .profession-card h4 {
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -452,8 +435,6 @@ label {
     50% { transform: scale(1.03); border-color: #83e6fb; }
     100% { transform: scale(1); }
 }
-
-/* --- ESTILOS DA FASE 3 (CAMINHO DA ESCOLHA) --- */
 
 #phase-3-profession-selection,
 #phase-3-step-quiz {
@@ -483,7 +464,7 @@ label {
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid #c79f76; /* Dourado */
+    border: 2px solid #c79f76; 
     border-radius: 50%;
     outline: none;
     position: relative;
@@ -512,7 +493,7 @@ label {
     background-color: #2c2526;
     padding: 15px;
     border-radius: 5px;
-    border-left: 4px solid #c79f76; /* Dourado */
+    border-left: 4px solid #c79f76; 
     text-align: left;
 }
 
@@ -536,7 +517,7 @@ label {
 }
 .step-option-button:hover {
     background-color: #352e2f;
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
 }
 .step-option-button:disabled {
     opacity: 0.6;
@@ -544,14 +525,10 @@ label {
     background-color: #231c1d;
 }
 
-#phase-3-feedback {
-    /* Estilo movido para .feedback-box */
-}
-
 #phase-3-summary {
     margin-top: 30px;
     padding: 20px;
-    border: 2px solid #c79f76; /* Dourado */
+    border: 2px solid #c79f76; 
     border-radius: 8px;
     background-color: #231c1d;
     text-align: left;
@@ -562,7 +539,6 @@ label {
     margin-top: 0;
 }
 
-/* --- ESTILOS DA FASE 4 (DESAFIO DA MOTIVAÇÃO) --- */
 #phase-4-scenario {
     background-color: #2c2526;
     border: 1px solid #c79f76;
@@ -596,17 +572,13 @@ label {
 }
 .choice-button:hover {
     background-color: #352e2f;
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
 }
 .choice-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-#phase-4-consequence {
-    /* Estilo movido para .feedback-box */
-}
-/* --- ESTILOS DA FASE 4 (DESAFIO DA MOTIVAÇÃO) --- */
 #phase-4-scenario {
     background-color: #2c2526;
     border: 1px solid #c79f76;
@@ -641,68 +613,7 @@ label {
 }
 .choice-button:hover {
     background-color: #352e2f;
-    border-color: #83e6fb; /* Azul Claro */
-}
-.choice-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-#phase-4-feedback {
-    /* Estilo movido para .feedback-box */
-    text-align: left;
-}
-
-#phase-4-summary {
-    margin-top: 30px;
-    padding: 20px;
-    border: 2px solid #c79f76; /* Dourado */
-    border-radius: 8px;
-    background-color: #231c1d;
-    text-align: left;
-    display: none;
-}
-#phase-4-summary h3 {
-    color: #c79f76;
-    margin-top: 0;
-}
-/* --- ESTILOS DA FASE 4 (DESAFIO DA MOTIVAÇÃO) --- */
-/* (Seu CSS da Fase 4 que já estava aqui) */
-#phase-4-scenario {
-    background-color: #2c2526;
-    border: 1px solid #c79f76;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-    text-align: left;
-}
-#phase-4-scenario-text {
-    font-size: 1.1em;
-    font-style: italic;
-    color: #e1e1e1;
-    margin-bottom: 20px;
-    margin-top: 0;
-}
-#phase-4-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.choice-button {
-    text-align: left;
-    padding: 15px;
-    background-color: #2c2526;
-    border: 1px solid #c79f76;
-    color: #e1e1e1;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
-    font-size: 1em;
-    width: 100%;
-}
-.choice-button:hover {
-    background-color: #352e2f;
-    border-color: #83e6fb; /* Azul Claro */
+    border-color: #83e6fb; 
 }
 .choice-button:disabled {
     opacity: 0.6;
@@ -714,7 +625,7 @@ label {
 #phase-4-summary {
     margin-top: 30px;
     padding: 20px;
-    border: 2px solid #c79f76; /* Dourado */
+    border: 2px solid #c79f76; 
     border-radius: 8px;
     background-color: #231c1d;
     text-align: left;
@@ -725,7 +636,63 @@ label {
     margin-top: 0;
 }
 
-/* --- ESTILOS DA FASE 5 (PROJETO de VIDA) --- */
+#phase-4-scenario {
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+#phase-4-scenario-text {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #e1e1e1;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+#phase-4-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.choice-button {
+    text-align: left;
+    padding: 15px;
+    background-color: #2c2526;
+    border: 1px solid #c79f76;
+    color: #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1em;
+    width: 100%;
+}
+.choice-button:hover {
+    background-color: #352e2f;
+    border-color: #83e6fb; 
+}
+.choice-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+#phase-4-feedback {
+    text-align: left;
+}
+#phase-4-summary {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #c79f76; 
+    border-radius: 8px;
+    background-color: #231c1d;
+    text-align: left;
+    display: none;
+}
+#phase-4-summary h3 {
+    color: #c79f76;
+    margin-top: 0;
+}
+
 #phase-5-form {
     text-align: left;
 }
@@ -736,13 +703,12 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
     font-size: 1.1em;
 }
-/* Estilo para combinar com os inputs da Fase 1 */
 .phase-5-question-group input[type="text"],
 .phase-5-question-group textarea {
-    width: 95%; /* Match existing inputs */
+    width: 95%; 
     padding: 12px;
     border: 2px solid #c79f76;
     background-color: #231c1d;
@@ -758,7 +724,7 @@ label {
 #phase-5-summary {
     margin-top: 30px;
     padding: 20px;
-    border: 2px solid #c79f76; /* Dourado */
+    border: 2px solid #c79f76; 
     border-radius: 8px;
     background-color: #231c1d;
     text-align: left;
@@ -769,9 +735,8 @@ label {
     margin-top: 0;
 }
 
-/* --- ESTILOS DO RANKING LOCAL (FASE 5) --- */
 #ranking-section h3 {
-    color: #c79f76; /* Dourado */
+    color: #c79f76; 
     text-align: center;
     margin-bottom: 15px;
 }
@@ -780,42 +745,40 @@ label {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    background-color: #2c2526; /* Fundo principal */
-    color: #e1e1e1; /* Texto claro */
+    background-color: #2c2526; 
+    color: #e1e1e1; 
     border-radius: 8px;
-    overflow: hidden; /* Para o border-radius funcionar com a tabela */
+    overflow: hidden; 
 }
 
 #ranking-table th, #ranking-table td {
-    border: 1px solid #c79f76; /* Borda dourada */
+    border: 1px solid #c79f76; 
     padding: 10px 12px;
     text-align: left;
 }
 
 #ranking-table th {
-    background-color: #c79f76; /* Cabeçalho dourado */
-    color: #231c1d; /* Texto escuro no cabeçalho */
+    background-color: #c79f76; 
+    color: #231c1d; 
     font-weight: bold;
 }
 
-#ranking-table td:first-child { /* Coluna Posição */
+#ranking-table td:first-child { 
     text-align: center;
     font-weight: bold;
 }
 
-/* Destaque para o primeiro lugar */
 #ranking-table .first-place-highlight td {
-    background-color: rgba(199, 159, 118, 0.3); /* Dourado translúcido */
-    color: #fff; /* Texto mais branco para destaque */
+    background-color: rgba(199, 159, 118, 0.3); 
+    color: #fff; 
     font-weight: bold;
 }
 #ranking-table .first-place-highlight td:first-child::before {
-    content: "🥇 "; /* Ícone de medalha */
+    content: "🥇 "; 
 }
 
-/* Destaque para a linha do jogador atual */
 #ranking-table .current-player-highlight td {
-    background-color: rgba(131, 230, 251, 0.2); /* Azul claro translúcido */
+    background-color: rgba(131, 230, 251, 0.2); 
     border-top: 2px solid #83e6fb;
     border-bottom: 2px solid #83e6fb;
 }
@@ -824,6 +787,8 @@ label {
     text-align: center;
     margin-top: 15px;
     font-weight: bold;
-    color: #83e6fb; /* Azul claro */
+    color: #83e6fb; 
     font-size: 1.1em;
+}
+
 }
