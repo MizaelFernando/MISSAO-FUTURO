@@ -1136,11 +1136,6 @@ window.generateCertificate = function() {
     certWindow.document.close(); 
 }
 
-// ==================================================================
-// === FIM DA ÁREA MODIFICADA ===
-// ==================================================================
-
-
 function saveScoreToLocalRanking() {
     const playerName = localStorage.getItem('missionFuture_name') || 'Jogador(a)';
     const totalGameScore = parseInt(localStorage.getItem('missionFuture_score') || '0');
